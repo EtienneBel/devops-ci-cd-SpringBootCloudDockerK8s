@@ -18,7 +18,7 @@ Create a build/deploy pipeline for a Spring Boot application through :
 ```
 > sudo apt-get install openjdk-17-jdk
 ```
-![alt text](image-3.png)
+![alt text](./resources/image-3.png)
 - Install Jenkins using the below steps.
 ```
 > curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key |
