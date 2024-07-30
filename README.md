@@ -15,7 +15,7 @@ Create a build/deploy pipeline for a Spring Boot application through :
 ![alt text](image-1.png)
 ## 3 - Using SSH : installing Java openjdk, Jenkins, git and kubectl.
 - Install Java 17
-```bash
+```
 > sudo apt-get install openjdk-17-jdk
 ```
 ![alt text](image-3.png)
