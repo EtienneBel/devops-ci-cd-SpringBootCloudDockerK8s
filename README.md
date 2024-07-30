@@ -46,8 +46,14 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
 ## 4 - Configure network
 - Create firewall rule to allow traffic on port tcp:8080
 - ![alt text](image-7.png) 
-## 4 - Setting up jenkins
-
+## 4 - Setting up Jenkins
+First, you need to access to your VM instance. Go to the VM created, then copy **External IP** and paste it on the browser : 
+![alt text](image-8.png)
+- To get the password 
+![alt text](image-9.png)
+- Copy, paste the password to get started the initial configuration. 
+- Then install all the recommend plugins before accessing to the dashboard.
+![alt text](image-11.png) 
 ## 5 - Creating JenkinsFile for each app.
 
 ## 6 - Deploy Kubernetes.
