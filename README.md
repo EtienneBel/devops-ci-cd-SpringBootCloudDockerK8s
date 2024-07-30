@@ -20,7 +20,7 @@ Create a build/deploy pipeline for a Spring Boot application through :
 ```
 ![alt text](image-3.png)
 - Install Jenkins using the below steps.
-```bash
+```
 > curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key |
 sudo tee \
 /usr/share/keyrings/jenkins-keyring.asc > /dev/null
@@ -34,12 +34,12 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
 ```
 ![alt text](image-4.png)
 - Install git which is required :
-```bash
+```
 > sudo apt-get install git
 ```
 ![alt text](image-5.png)
 - Install kubectl
-```bash
+```
 > sudo apt-get install kubectl
 ```
 ![alt text](image-6.png)
