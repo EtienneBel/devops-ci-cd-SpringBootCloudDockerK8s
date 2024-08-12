@@ -70,6 +70,21 @@ First, you need to access to your VM instance. Go to the VM created, then copy *
 - To connect github to jenkins, you need to create a personal token on github then add it to a new credential on jenkins (paste the token copied in password field) :
 
 ![img_6.png](screenshots/img_6.png)
+
+- Create a service account, When Jenkins needs to interact with GCP services (here, Kubernetes), it will use this service account to authenticate securely :
+
+![img.png](img.png)
+- Then generate a Service Account Key (in JSON format) and add it as new credential, secret file, to Jenkins for GCP :
+
+![img_1.png](img_1.png)
+
+![img_2.png](img_2.png)
+- Install Google Kubernetes Plugin in Jenkins, this plugin allows Jenkins to deploy build artifacts to a Kubernetes cluster running on Google Kubernetes Engine - GKE :
+
+![img_3.png](img_3.png)
+
+![img_4.png](img_4.png)
+
 ## 5 - Creating JenkinsFile for each app.
 
 ## 6 - Deploy Kubernetes.
