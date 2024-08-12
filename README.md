@@ -2,12 +2,17 @@
 Create a build/deploy pipeline for a Spring Boot application through : 
 - setting up a pipeline for the Spring Boot application hosted on GitHub, 
 - building it using Jenkins, 
-- and deploying it to an Google Cloud Platform Service (GCP).
+- and deploying it to a Google Cloud Platform Service (GCP).
 
 ## Prerequisites:
 - A Spring Boot application hosted on GitHub.
-- [Google Cloud Account](https://console.cloud.google.com/) with ??? and ??? services set up.
-- Jenkins Server: A running Jenkins server. You can set this up on a VM instance in GCP.
+- A [Google Cloud Account](https://console.cloud.google.com/).
+
+## To Set Up the GCP Environment
+- GCP Project: Create a new project in the GCP console.
+- VM Instances: Set up virtual machines for Jenkins and your Spring Boot application (if needed). 
+- Kubernetes Cluster: Create a GKE (Google Kubernetes Engine) cluster. 
+- Artifact Repository: Use Google Container Registry (GCR) or Artifact Registry to store your Docker images.
 
 ## 1 - Enable Kubernetes API on GCP
 ![alt text](./screenshots/image.png)
@@ -85,6 +90,15 @@ First, you need to access to your VM instance. Go to the VM created, then copy *
 
 ![img_4.png](screenshots/img_4.png)
 
-## 5 - Creating JenkinsFile for each app.
+## 5 - Setting K8s Cluster and Other Jenkins settings
+- Create a K8s cluster
 
-## 6 - Deploy Kubernetes.
+![img.png](img.png)
+- Add environment variables in Jenkins for ARTIFACT_REPOSITORY, CLUSTER, PROJECT_ID, REGISTRY_URL and ZONE :
+
+![img_1.png](img_1.png)
+![img_3.png](img_3.png)
+![img_5.png](img_5.png)
+## 6 - Creating JenkinsFile for each app.
+
+## 7 - Deploy Kubernetes.
