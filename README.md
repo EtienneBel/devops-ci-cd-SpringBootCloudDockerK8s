@@ -93,12 +93,12 @@ First, you need to access to your VM instance. Go to the VM created, then copy *
 ## 5 - Setting K8s Cluster and Other Jenkins settings
 - Create a K8s cluster
 
-![img.png](img.png)
+![img.png](screenshots/img_1_4.png)
 - Add environment variables in Jenkins for ARTIFACT_REPOSITORY, CLUSTER, PROJECT_ID, REGISTRY_URL and ZONE :
 
-![img_1.png](img_1.png)
-![img_3.png](img_3.png)
-![img_5.png](img_5.png)
+![img_1.png](screenshots/img_1_5.png)
+![img_3.png](screenshots/img_3_7.png)
+![img_5.png](screenshots/img_5_9.png)
 ## 6 - Creating JenkinsFile for each app.
 
 ## 7 - Deploy Kubernetes.
