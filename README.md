@@ -73,17 +73,17 @@ First, you need to access to your VM instance. Go to the VM created, then copy *
 
 - Create a service account, When Jenkins needs to interact with GCP services (here, Kubernetes), it will use this service account to authenticate securely :
 
-![img.png](img.png)
+![img.png](screenshots/img1_1.png)
 - Then generate a Service Account Key (in JSON format) and add it as new credential, secret file, to Jenkins for GCP :
 
-![img_1.png](img_1.png)
+![img_1.png](screenshots/img_1_2.png)
 
-![img_2.png](img_2.png)
+![img_2.png](screenshots/img_1_3.png)
 - Install Google Kubernetes Plugin in Jenkins, this plugin allows Jenkins to deploy build artifacts to a Kubernetes cluster running on Google Kubernetes Engine - GKE :
 
-![img_3.png](img_3.png)
+![img_3.png](screenshots/img_3.png)
 
-![img_4.png](img_4.png)
+![img_4.png](screenshots/img_4.png)
 
 ## 5 - Creating JenkinsFile for each app.
 
