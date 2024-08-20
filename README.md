@@ -1,7 +1,7 @@
 # CI/CD pipeline set up using Jenkins, Spring Boot, Google Cloud (GCP), Artifact Registry, Kubernetes (K8s), GitHub, and Docker.
 ![img.png](screenshots/img_45.png)
 
-[Here’s](#-8-flow-and-components-explained) a step-by-step explanation of how a CI/CD pipeline can be set up, build then deploy to a Google Cloud Platform Service.
+[Here’s a step-by-step explanation](#8---flow-and-components-explained) of how a CI/CD pipeline can be set up, build then deploy to a Google Cloud Platform Service.
 
 ## Prerequisites:
 - A Spring Boot application hosted on GitHub.
