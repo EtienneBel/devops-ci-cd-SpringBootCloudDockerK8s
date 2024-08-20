@@ -1,12 +1,11 @@
-# devops-ci-cd-SpringBootCloudDockerK8s
-Create a build/deploy pipeline for a Spring Boot application through : 
-- setting up a pipeline for the Spring Boot application hosted on GitHub, 
-- building it using Jenkins, 
-- and deploying it to a Google Cloud Platform Service (GCP).
+# DevOps CI/CD pipeline set up using Jenkins, Spring Boot, Google Cloud (GCP), Artifact Registry, Kubernetes (K8s), GitHub, and Docker.
+![img.png](screenshots/img_45.png)
+
+Here’s a step-by-step explanation of how a CI/CD pipeline can be set up, build then deploy to a Google Cloud Platform Service.
 
 ## Prerequisites:
 - A Spring Boot application hosted on GitHub.
-- A [Google Cloud Account](https://console.cloud.google.com/).
+-  [Google Cloud Account](https://console.cloud.google.com/).
 
 ## To Set Up the GCP Environment
 - GCP Project: Create a new project in the GCP console.
@@ -102,3 +101,52 @@ First, you need to access to your VM instance. Go to the VM created, then copy *
 ## 6 - Creating JenkinsFile for each app.
 
 ## 7 - Deploy Kubernetes.
+
+## 8 - Flow and Components Explained
+1. Source Code Management (GitHub)
+- GitHub is used as the version control system where your Spring Boot application's source code is hosted. Developers push their changes to the main branch (or any other branch) in a GitHub repository.
+2. Continuous Integration (Jenkins)
+- Jenkins is the CI/CD server that automates the build, test, and deployment process.
+- When a developer pushes code to GitHub, it triggers a Jenkins pipeline. This can be set up using webhooks or a Jenkinsfile in the repository.
+3. Checkout Code (Jenkins Stage)
+- Jenkins checks out the latest code from the specified branch in the GitHub repository.
+- This code will typically include the Spring Boot application and any necessary configuration files (e.g., application.properties, pom.xml, etc.).
+4. Build the Application (Maven)
+- Jenkins uses Maven to build the Spring Boot application. The build process involves:
+  - Compiling the code.
+  - Running unit tests.
+  - Packaging the application into a JAR file.
+  - This is done using the mvn clean install command, which is part of the Jenkins pipeline script. Maven's configuration is defined in the pom.xml file.
+
+5. Containerize the Application (Docker)
+- The Spring Boot application is then containerized using Docker. This involves:
+  - Writing a Dockerfile that defines how the Spring Boot application should be packaged into a Docker image.
+   - Using a tool like Jib (as mentioned in your pipeline) to build the Docker image directly from the Maven build without needing a Docker daemon.
+6. Push Docker Image to Artifact Registry
+- Once the Docker image is built, it needs to be stored in a container registry. In this case, you're using Google Artifact Registry.
+- Jenkins authenticates with Google Cloud using service account credentials and pushes the Docker image to the Artifact Registry. This is done using the gcloud auth commands and the jib:build Maven goal.
+-  The image is now available in the Artifact Registry, tagged with the appropriate version or latest tag.
+7. Update Kubernetes Manifest (Jenkins Stage)
+- The Kubernetes deployment manifest (deployment.yaml) contains the configuration for deploying the application to a Kubernetes cluster.
+-  Jenkins replaces the placeholder for the Docker image URL in the deployment.yaml file with the actual image URL from the Artifact Registry.
+8. Deploy to Kubernetes (GCP Kubernetes Engine)
+-  Jenkins uses the kubectl command or a Kubernetes plugin to deploy the updated application to the Google Kubernetes Engine (GKE) cluster.
+-  The deployment process involves:
+   - Updating the Kubernetes Deployment with the new Docker image.
+   - Rolling out the updated pods to ensure zero-downtime deployment.
+9. Continuous Deployment
+- Once deployed, the new version of the application is running on the Kubernetes cluster.
+- Jenkins can be configured to notify the team of the successful deployment, or it can trigger further tests (e.g., integration tests or smoke tests) to validate the deployment.
+10. Monitoring and Feedback
+- After deployment, the application is monitored using tools like Google Cloud Monitoring, Prometheus, or Grafana.
+- Feedback from monitoring can be used to trigger rollbacks or further improvements in the CI/CD pipeline.
+    
+11. Summary of Key Components:
+    - GitHub: Version control for source code.
+    - Jenkins: Automates the CI/CD process.
+    - Spring Boot: The application framework used to build the application.
+    - Maven: Tool for building and managing Java-based projects.
+    - Docker: Containerizes the application.
+    - Google Artifact Registry: Stores Docker images.
+    - Kubernetes (GKE): Orchestrates and manages the containerized applications.
+    - Google Cloud (GCP): Cloud platform hosting the infrastructure, including Kubernetes and Artifact Registry.
