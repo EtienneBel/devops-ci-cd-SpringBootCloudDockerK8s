@@ -98,17 +98,19 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 ![img_4.png](screenshots/img_4.png)
 
 
-![img_4.png](screenshots/img_4.png)
-
 ## 5 - Setting K8s Cluster and Other Jenkins settings
-- Create a K8s cluster
+- Create a K8s cluster on GCP
 
 ![img.png](screenshots/img_1_4.png)
+
 - Add environment variables in Jenkins for ARTIFACT_REPOSITORY, CLUSTER, PROJECT_ID, REGISTRY_URL and ZONE :
 
 ![img_1.png](screenshots/img_1_5.png)
+
 ![img_3.png](screenshots/img_3_7.png)
+
 ![img_5.png](screenshots/img_5_9.png)
+
 ## 6 - Creating JenkinsFile for each app.
 
 ## 7 - Deploy Kubernetes.
