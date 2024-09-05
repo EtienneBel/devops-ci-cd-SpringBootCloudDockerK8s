@@ -77,24 +77,26 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 
 ![img_6.png](screenshots/img_6.png)
 
-- Create a service account, so when Jenkins needs to interact with GCP services and Kubernetes, it will use this service account to authenticate securely :
+- When Jenkins is deploying to K8s, it has to connect to GCP, so, let's create a service account (in IAM), so Jenkins will use this service account to authenticate securely to GCP :
 
 ![img.png](screenshots/img1_1.png)
 
-- Install GCP Plugin in Jenkins
-
-![img_3.png](screenshots/img_3.png)
-
-![img_4.png](screenshots/img_4.png)
-
-- Then generate a Service Account Key (in JSON format) and add it as new credential, secret file, to Jenkins for GCP :
-
-![img_1.png](screenshots/img_1_2.png)
-
-![img_2.png](screenshots/img_1_3.png)
 - Install Google Kubernetes Plugin in Jenkins, this plugin allows Jenkins to deploy build artifacts to a Kubernetes cluster running on Google Kubernetes Engine - GKE :
 
 ![img_3.png](screenshots/img_3.png)
+
+- Go back to the Service Account added and create and download a json key from Keys section. 
+
+![img_3.png](img_1_2.png)
+
+- Upload it as a new credential (type : secret file) to Jenkins. This credential is used for general authentication with GCP services in Jenkins pipelines. 
+
+![img_2.png](screenshots/img_1_3.png) 
+
+- And this second one is most likely used for general authentication to our GCP project 
+  
+![img_4.png](screenshots/img_4.png)
+
 
 ![img_4.png](screenshots/img_4.png)
 
