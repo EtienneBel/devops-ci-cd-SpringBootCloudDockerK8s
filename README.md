@@ -187,7 +187,10 @@ NB : the Payload URL is the url of Jenkins Server, and the Secret is an API Toke
 ![alt text](./screenshots/image-78888.png)
 
 
-## 10 - Flow and Components Explained
+## 10 - Run on Kubernetes
+- 
+
+## 11 - Flow and Components Explained
 1. Source Code Management (Github)
 - Github is used as the version control system where wer Spring Boot application's source code is hosted. Developers push their changes to the main branch (or any other branch) in a Github repository.
 2. Continuous Integration (Jenkins)
