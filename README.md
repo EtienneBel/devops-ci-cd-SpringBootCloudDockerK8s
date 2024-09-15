@@ -19,7 +19,7 @@ Kubernetes Engine API is a service provided by GCP that allows users to manage a
 ![alt text](./screenshots/image.png)
 
 ## 2 - Creating Artifact Registry.
-![alt text](image-3.png)
+![alt text](./screenshots/image-3555.png)
 
 ## 3 - Creating VM instances.
 ![alt text](./screenshots/image-1.png)
@@ -27,7 +27,7 @@ Kubernetes Engine API is a service provided by GCP that allows users to manage a
 ## 4 - Using SSH : installing Java openjdk, Jenkins, git and kubectl.
 Open SSH in browser window to run commands
 
-![alt text](image-2.png)
+![alt text](./screenshots/image-28888.png)
 
 - Install Java 17
 
@@ -91,9 +91,9 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 
 ![img_2.png](screenshots/img_2.png)
 
-![alt text](image.png)
+![alt text](./screenshots/image.png)
 
-![alt text](image-1.png)
+![alt text](./screenshots/image-1.png)
 
 - To connect Github to Jenkins, we need to create a personal token on Github then add it as new credential on Jenkins (paste the token copied in password field) :
 **NB: the id "git" use here is the same when adding git tool.**
@@ -110,7 +110,7 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 
 - Go back to the **Service Account** added and create and download a json key from **Keys section**. 
 
-![img_3.png](img_1_2.png)
+![img_3.png](screenshots/img_1_200.png)
 
 - Upload it as a new credential (type : secret file) to Jenkins. This credential is used for general authentication with GCP services in Jenkins pipelines. 
 
@@ -168,9 +168,24 @@ node {
 }
 ```
 
+## 9 - Creating Pipeline and Deployment.
+- Create new item of type pipeline : 
 
+![alt text](./screenshots/image-45555.png)
 
-## 9 - Deploy Kubernetes.
+- Add the GitHub url : 
+
+![alt text](./screenshots/image-78888.png)
+
+- Check **GitHub hook trigger for GITScm polling** then setup a webhook in Github. 
+NB : the Payload URL is the url of Jenkins Server, and the Secret is an API Token generated in Jenkins.
+
+![alt text](./screenshots/image-6+666.png)
+
+- Let's configure the pipeline script to run : 
+
+![alt text](./screenshots/image-78888.png)
+
 
 ## 10 - Flow and Components Explained
 1. Source Code Management (Github)
