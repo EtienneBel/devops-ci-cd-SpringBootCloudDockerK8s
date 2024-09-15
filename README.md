@@ -5,43 +5,61 @@
 
 ## Prerequisites:
 - A Spring Boot application hosted on Github.
--  [Google Cloud Account](https://console.cloud.google.com/).
+- A [Google Cloud Account](https://console.cloud.google.com/).
 
-## To Set Up the GCP Environment
-- GCP Project: Create a new project in the GCP console.
-- VM Instances: Set up virtual machines for Jenkins and wer Spring Boot application (if needed). 
-- Kubernetes Cluster: Create a GKE (Google Kubernetes Engine) cluster. 
-- Artifact Repository: Use Google Container Registry (GCR) or Artifact Registry to store wer Docker images.
+## To Set Up the Environment
+- Create a new project in the GCP console.
+- Set up  VM (virtual machines) to install Jenkins Server. 
+- Create a GKE (Google Kubernetes Engine) cluster. 
+- Use Artifact Registry to store the images (of Docker).
 
-## 1 - Enable Kubernetes API on GCP
+## 1 - Enable Kubernetes Engine API on the Google Cloud Platform (GCP). 
+Kubernetes Engine API is a service provided by GCP that allows users to manage and interact with Kubernetes clusters.
+
 ![alt text](./screenshots/image.png)
 ## 2 - Creating VM instances.
 ![alt text](./screenshots/image-1.png)
 ## 3 - Using SSH : installing Java openjdk, Jenkins, git and kubectl.
+Open SSH in browser window to run commands
+
+![alt text](image-2.png)
+
 - Install Java 17
+
+Java is required to install and run Jenkins because Jenkins itself is built on Java.
 ```
 > sudo apt-get install openjdk-17-jdk
 ```
 ![alt text](./screenshots/image-3.png)
-- Install Jenkins using the below steps.
+
+- Add the Jenkins GPG key:
 ```
-> curl -fsSL https://pkg.Jenkins.io/debian-stable/Jenkins.io-2023.key | sudo tee \
-  /usr/share/keyrings/Jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/Jenkins-keyring.asc] \
-  https://pkg.Jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/Jenkins.list > /dev/null
-  
+> curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+```
+
+- Add the Jenkins repository:
+```
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+
+- Update the package list, then Install Jenkins:
+
+```  
 > sudo apt-get update
 
 > sudo apt-get install Jenkins
 ```
 ![alt text](./screenshots/image-4.png)
-- Install git which is required :
+
+- Install git :
+  
+By installing Git in Jenkins, you enable Jenkins to interact with Git repositories, clone code, and perform various operations such as checking out specific branches, pulling updates, and pushing changes.
 ```
 > sudo apt-get install git
 ```
 ![alt text](./screenshots/image-5.png)
-- Install kubectl
+
+- Install kubectl : to enable Jenkins to interact with Kubernetes clusters and perform operations such as deploying applications, managing pods, and executing commands on the cluster.
 ```
 > sudo apt-get install kubectl
 ```
@@ -112,6 +130,9 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 ![img_5.png](screenshots/img_5_9.png)
 
 ## 6 - Creating JenkinsFile for each app.
+This Jenkins pipeline script automates the end-to-end process of checking out the source code, building a Docker image, pushing it to a repository, and deploying it to a Kubernetes cluster. 
+
+
 
 ## 7 - Deploy Kubernetes.
 
