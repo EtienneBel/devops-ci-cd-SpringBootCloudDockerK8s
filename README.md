@@ -17,9 +17,14 @@
 Kubernetes Engine API is a service provided by GCP that allows users to manage and interact with Kubernetes clusters.
 
 ![alt text](./screenshots/image.png)
-## 2 - Creating VM instances.
+
+## 2 - Creating Artifact Registry.
+![alt text](image-3.png)
+
+## 3 - Creating VM instances.
 ![alt text](./screenshots/image-1.png)
-## 3 - Using SSH : installing Java openjdk, Jenkins, git and kubectl.
+
+## 4 - Using SSH : installing Java openjdk, Jenkins, git and kubectl.
 Open SSH in browser window to run commands
 
 ![alt text](image-2.png)
@@ -47,7 +52,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins
 ```  
 > sudo apt-get update
 
-> sudo apt-get install Jenkins
+> sudo apt-get install jenkins
 ```
 ![alt text](./screenshots/image-4.png)
 
@@ -64,12 +69,12 @@ By installing Git in Jenkins, you enable Jenkins to interact with Git repositori
 > sudo apt-get install kubectl
 ```
 ![alt text](./screenshots/image-6.png)
-## 4 - Configure network
+## 5 - Configure network
 - Create firewall rule to allow traffic on port tcp:8080
 
 
 ![alt text](./screenshots/image-7.png) 
-## 4 - Setting up Jenkins
+## 6 - Setting up Jenkins
 First, we need to access to wer VM instance. Go to the VM created, then copy **External IP** and paste it in the browser on the port we configured on firewall : 
 
 ![alt text](./screenshots/image-8.png)
@@ -95,15 +100,15 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 
 ![img_6.png](screenshots/img_6.png)
 
-- When Jenkins is deploying to K8s, it has to connect to GCP, so, let's create a service account (in IAM), so Jenkins will use this service account to authenticate securely to GCP :
+- When Jenkins is deploying to K8s, it has to connect to GCP, so, let's create a **Service Account (in IAM)**, so Jenkins will use this service account to authenticate securely to GCP :
 
 ![img.png](screenshots/img1_1.png)
 
-- Install Google Kubernetes Plugin in Jenkins, this plugin allows Jenkins to deploy build artifacts to a Kubernetes cluster running on Google Kubernetes Engine - GKE :
+- Install **Google Kubernetes** Plugin in Jenkins, this plugin allows Jenkins to deploy build artifacts to a Kubernetes cluster :
 
 ![img_3.png](screenshots/img_3.png)
 
-- Go back to the Service Account added and create and download a json key from Keys section. 
+- Go back to the **Service Account** added and create and download a json key from **Keys section**. 
 
 ![img_3.png](img_1_2.png)
 
@@ -116,12 +121,12 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 ![img_4.png](screenshots/img_4.png)
 
 
-## 5 - Setting K8s Cluster and Other Jenkins settings
+## 7 - Setting K8s Cluster and Other Jenkins settings
 - Create a K8s cluster on GCP
 
 ![img.png](screenshots/img_1_4.png)
 
-- Add environment variables in Jenkins for ARTIFACT_REPOSITORY, CLUSTER, PROJECT_ID, REGISTRY_URL and ZONE :
+- Add environment variables in Jenkins for ARTIFACT_REGISTRY, CLUSTER, PROJECT_ID, REGISTRY_URL and ZONE :
 
 ![img_1.png](screenshots/img_1_5.png)
 
@@ -129,14 +134,14 @@ First, we need to access to wer VM instance. Go to the VM created, then copy **E
 
 ![img_5.png](screenshots/img_5_9.png)
 
-## 6 - Creating JenkinsFile for each app.
+## 8 - Creating JenkinsFile for each app.
 This Jenkins pipeline script automates the end-to-end process of checking out the source code, building a Docker image, pushing it to a repository, and deploying it to a Kubernetes cluster. 
 
 
 
-## 7 - Deploy Kubernetes.
+## 9 - Deploy Kubernetes.
 
-## 8 - Flow and Components Explained
+## 10 - Flow and Components Explained
 1. Source Code Management (Github)
 - Github is used as the version control system where wer Spring Boot application's source code is hosted. Developers push their changes to the main branch (or any other branch) in a Github repository.
 2. Continuous Integration (Jenkins)
